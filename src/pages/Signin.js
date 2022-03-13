@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { UserContextProvider } from '../context/user-context'
 
 const SigninPage = () => {
   const [formValues, setFormValues] = useState({
@@ -53,6 +54,7 @@ const SigninPage = () => {
 
       // 로그인 성공
       // window.alert('로그인 성공!')
+      /*
       window.localStorage.setItem(
         'USER',
         JSON.stringify({
@@ -61,6 +63,13 @@ const SigninPage = () => {
           name: user.name,
         }),
       )
+      */
+      setUser({
+        email: user.email,
+        job: user.job,
+        name: user.name,
+      })
+
       navigate('/')
     } catch (e) {
       // 에러발생
