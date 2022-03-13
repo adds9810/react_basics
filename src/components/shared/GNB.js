@@ -1,11 +1,11 @@
 import { Link, useLocation } from 'react-router-dom'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 import { PATHS } from '../../constants'
-import { useUserContext } from '../../context/user-context'
+import { useUserContext } from '../../contexts/user-context'
 
-const ULComponent = styled.ul`
-  display: fixed;
+const ListContainer = styled.ul`
+  display: flex;
   padding: 24px;
 `
 
@@ -13,13 +13,15 @@ const ListItem = styled.li`
   padding: 0 12px;
   & a {
     ${(props) => {
-      return props.active ? 'font-weight : bold' : ''
+      return props.active ? 'font-weight: bold;' : ''
     }}
   }
 `
+// 믹스인
 const pinkColor = css`
   color: pink;
 `
+
 const LinkAAA = styled(Link)`
   ${pinkColor}
 `
@@ -27,10 +29,6 @@ const LinkAAA = styled(Link)`
 const GNB = () => {
   const location = useLocation()
   const { user, setUser } = useUserContext()
-  //const props = useUserContext()
-
-  //console.log('location', location)
-  // console.log('props', props)
 
   const handleLogout = () => {
     setUser(null)
@@ -38,12 +36,12 @@ const GNB = () => {
 
   return (
     <div>
-      <ULComponent>
+      <ListContainer>
         <ListItem active={location.pathname === PATHS.HOME}>
-          <Link to={PATHS.HOME}>홈</Link>
+          <LinkAAA to={PATHS.HOME}>홈</LinkAAA>
         </ListItem>
         <ListItem active={location.pathname === PATHS.BANNER_CREATE}>
-          <Link to={PATHS.BANNER_CREATE}>베너생성</Link>
+          <Link to={PATHS.BANNER_CREATE}>배너생성</Link>
         </ListItem>
         {user == null ? (
           <>
@@ -62,7 +60,7 @@ const GNB = () => {
             <ListItem onClick={handleLogout}>로그아웃</ListItem>
           </>
         )}
-      </ULComponent>
+      </ListContainer>
     </div>
   )
 }

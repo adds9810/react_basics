@@ -1,22 +1,22 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-
-// 모든 컴포넌트의 최상위 부모
+// 모든 컴포넌트들의 최상위 부모
 
 // context api => 다음주
-// BrowserRouter = 브라우저 히스토리 정보를 담고 있는 context api
-// 박스로 감싸져 있어야 박스의 정보에 접근이 가능하다.
+// BrowserRouter = 브라우저 히스토리 정보를 담고있는 context api 다
+// 박스로 감싸져있어야 박스의 정보에 접근이 가능하다.
+
 import BannerPage from './pages/banner'
-import BannerCreatePage from './pages/Banner-create'
+import BannerCreatePage from './pages/banner-create'
 import HomePage from './pages/Home'
 import SigninPage from './pages/Signin'
 import SignupPage from './pages/Signup'
-import MyinfoPage from './pages/Myinfo'
+import MyInfoPage from './pages/MyInfo'
 import GNB from './components/shared/GNB'
 
-import { UserContextProvider } from './constants/user-context'
+import { UserContextProvider } from './contexts/user-context'
 import { PATHS } from './constants'
-import PrivateRoute from './component/shared/PrivateRoute'
-import ResetCSS from './component/shared/ResetCSS'
+import PrivateRoute from './components/shared/PrivateRoute'
+import ResetCSS from './components/shared/ResetCSS'
 
 const App = () => {
   return (
@@ -38,7 +38,7 @@ const App = () => {
               path={PATHS.MY_INFO}
               element={
                 <PrivateRoute>
-                  <MyinfoPage />
+                  <MyInfoPage />
                 </PrivateRoute>
               }
             ></Route>

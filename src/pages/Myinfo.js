@@ -1,4 +1,4 @@
-const MyinfoPage = () => {
+const MyInfoPage = () => {
   return (
     <div>
       <h1>내정보</h1>
@@ -6,4 +6,4 @@ const MyinfoPage = () => {
   )
 }
 
-export default MyinfoPage
+export default MyInfoPage
